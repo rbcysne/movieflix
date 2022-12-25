@@ -1,0 +1,14 @@
+
+.btn-container button {
+    border-radius: 4px;
+    width: 100%;
+}
+
+.btn h6 {
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 20px;
+    text-align: center;
+    letter-spacing: -0.015em;
+    color: #000000;
+}

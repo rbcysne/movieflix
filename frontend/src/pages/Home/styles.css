@@ -1,0 +1,16 @@
+.home-container {
+    padding: 20px;
+    font-size: 16px;
+}
+
+.home-image {
+    display: none;
+}
+
+@media (min-width: 1200px) {
+
+    .home-image {
+        display: unset;
+    }
+    
+}

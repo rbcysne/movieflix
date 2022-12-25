@@ -1,0 +1,15 @@
+.main-nav {
+    min-height: 70px;
+    padding-left: 20px;
+    font-size: 16px;
+}
+
+.nav-logo, .nav-logo:hover {
+    color: #000000;
+    text-decoration: none;
+}
+
+.nav-logo h4 {
+    font-size: 1.5em;
+    font-weight: 700;
+}

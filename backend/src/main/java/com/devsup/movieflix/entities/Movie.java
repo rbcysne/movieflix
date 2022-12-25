@@ -24,12 +24,18 @@ public class Movie implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	@Column(columnDefinition= "TEXT")
 	private String title;
+	
+	@Column(columnDefinition= "TEXT")
 	private String subTitle;
 	private Integer year;
+	
+	@Column(columnDefinition= "TEXT")
 	private String imgUrl;
 	
-	@Column(length = 512)
+	@Column(columnDefinition = "TEXT")
 	private String synopsis;
 	
 	@OneToMany(mappedBy = "movie")
