@@ -1,0 +1,25 @@
+.movie-card {
+    display: flex;
+    align-items: center;
+    align-content: space-around;
+    margin-bottom: 20px;
+}
+
+.card-title-container {
+    padding: 10px;
+}
+
+.card-title-container h6 {
+    font-size: 18px;
+    color: #263238;
+}
+
+.card-image-container {
+    text-align: start;
+    padding: 10px 0 10px 10px;
+}
+
+.card-image-container img {
+    width: 80px;
+    height: 80px;
+}

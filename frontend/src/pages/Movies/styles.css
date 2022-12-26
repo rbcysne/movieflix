@@ -1,0 +1,14 @@
+.movies-list-container {
+    font-size: 18px;
+}
+
+.movies-list-title-container {
+    margin-bottom: 20px;
+}
+
+.movies-list-title-container h1 {
+    font-size: 1em;
+    line-height: 25px;
+    letter-spacing: -0.015em;
+    color: #FFFFFF;
+}

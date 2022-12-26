@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Movie } from 'types/Movie';
 import { Page } from 'types/Page';
 import { requestBackend } from 'util/requests';
-import MovieCard from './MovieCard';
+import MovieCard from '../../components/MovieCard';
 import './styles.css';
 
 const Movies = () => {
@@ -13,6 +13,7 @@ const Movies = () => {
 
     useEffect(() => {
         const params: AxiosRequestConfig = {
+            method: 'GET',
             url: "/movies",
             withCredentials: true,
         }
@@ -25,8 +26,10 @@ const Movies = () => {
 
     return (
 
-        <div className="movies-list-container">
-            <h1>Tela listagem de filmes</h1>
+        <div className="container my-4 movies-list-container">
+            <div className="row movies-list-title-container">
+                <h1>Tela listagem de filmes</h1>
+            </div>
 
             <div className="row">
                 { page?.content.map((item) => {
