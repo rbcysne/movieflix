@@ -41,3 +41,7 @@ export const requestBackend = (requestConfig : AxiosRequestConfig) => {
 
     return axios({ ...requestConfig, baseURL: BASE_URL, headers });
 }
+
+export const saveReview = () => {
+    
+}

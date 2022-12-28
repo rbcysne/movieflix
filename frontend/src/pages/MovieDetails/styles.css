@@ -1,0 +1,19 @@
+.movie-details-title-container {
+    padding: 15px 10px;
+    font-size: 16px;
+}
+
+.movie-details-title-container h6 {
+    font-size: 1.6em;
+    font-weight: 700;
+    color: #FFFFFF;
+    letter-spacing: -0.015em;
+}
+
+.new-review-card {
+    padding: 10px;
+}
+
+.reviews-card {
+    margin-top: 32px;
+}

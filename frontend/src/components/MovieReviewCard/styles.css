@@ -1,0 +1,26 @@
+.review-container {
+    font-size: 16px;
+    padding: 10px 10px;
+    letter-spacing: -0.015em;
+}
+
+.review-top-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    padding-left: 4px;
+}
+
+.review-top-container span {
+    font-weight: 700;
+    color: #FFFFFF;
+    padding-left: 15px;
+}
+
+.review-content-container {
+    text-align: justify;
+    color: #9E9E9E;
+    border: 1px solid #E1E1E1;
+    border-radius: 4px;
+    padding: 8px;
+}

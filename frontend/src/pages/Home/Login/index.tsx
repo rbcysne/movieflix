@@ -1,24 +1,23 @@
 import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { useState } from "react";
 
 import ButtonIcon from "components/ButtonIcon";
-import { FormData } from "types/FormData";
+import { requestBackendLogin } from "util/requests";
+import { saveLoginAuthData } from "util/storage";
+import { LoginFormData } from "types/LoginFormData";
 
 import "./styles.css";
-import { requestBackendLogin } from "util/requests";
-import { useState } from "react";
-import { saveLoginAuthData } from "util/storage";
-
 
 const Login = () => {
     
-  const { register, handleSubmit, formState: { errors }, } = useForm<FormData>();
+  const { register, handleSubmit, formState: { errors }, } = useForm<LoginFormData>();
 
   const [hasError, setHasError] = useState(false);
 
   const history = useHistory();
 
-  const onSubmit = ( formData : FormData ) => {
+  const onSubmit = ( formData : LoginFormData ) => {
     console.log(formData);
     requestBackendLogin(formData)
         .then( response => {

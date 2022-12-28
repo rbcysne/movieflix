@@ -9,3 +9,7 @@ export const saveLoginAuthData = (loginObj : LoginResponse) => {
 export const getLoginAuthData = () => {
     return JSON.parse(localStorage.getItem(loginAuthData) ?? "{}") as LoginResponse;
 }
+
+export const removeLoginAuthData = () => {
+    localStorage.removeItem(loginAuthData);
+}
