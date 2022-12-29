@@ -2,6 +2,7 @@ import axios, { AxiosRequestConfig } from "axios";
 import qs from 'qs';
 
 import { LoginDataCredentials } from "types/LoginDataCredentials";
+import { ReviewFormData } from "types/ReviewFormData";
 import { getLoginAuthData } from "./storage";
 
 
@@ -42,6 +43,3 @@ export const requestBackend = (requestConfig : AxiosRequestConfig) => {
     return axios({ ...requestConfig, baseURL: BASE_URL, headers });
 }
 
-export const saveReview = () => {
-    
-}

@@ -7,13 +7,17 @@ import Login from './Login';
 export const Home = () => {
 
     return (
-        <div className="home-container">
-            <Login />
+        <div className="container">
+            <div className="home-container">
+                <div>
+                    <Login />
+                </div>
 
-            <div className="home-image">
-                <HomeImage />
+                <div className="home-image">
+                    <HomeImage />
+                </div>
+
             </div>
-
         </div>
     );
 };

@@ -21,9 +21,9 @@ const Movies = () => {
         requestBackend(params)
             .then(response => {
                 setPage(response.data);
-                console.log(page?.content);
+                // console.log(page?.content);
             })
-    });
+    }, []);
 
     return (
 

@@ -1,10 +1,10 @@
 import { AxiosRequestConfig } from "axios";
-import ButtonIcon from "components/ButtonIcon";
-import MovieReviewCard from "components/MovieReviewCard";
 import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
-import { Movie } from "types/Movie";
+
+import ButtonIcon from "components/ButtonIcon";
+import MovieReviewCard from "components/MovieReviewCard";
 import { MovieReview } from "types/MovieReview";
 import { ReviewFormData } from "types/ReviewFormData";
 import { requestBackend } from "util/requests";
@@ -19,24 +19,9 @@ const MovieDetails = () => {
 
     const  { movieId } = useParams<UrlParams>();
 
-    const [ movie, setMovie ] = useState<Movie>();
-
-    const [ movieReviews, setMovieReviews ] = useState<MovieReview[]>();
+    const [ movieReviews, setMovieReviews ] = useState<MovieReview[]>([]);
 
     const { register, handleSubmit, formState : { errors} } = useForm<ReviewFormData>();
-
-    useEffect(() => {
-        const params: AxiosRequestConfig = {
-            method: 'GET',
-            url: `/movies/${movieId}`,
-            withCredentials: true,
-        };
-
-        requestBackend(params)
-            .then(response => {
-                setMovie(response.data);
-            });
-    }, [movieId]);
 
     useEffect(() => {
         const params: AxiosRequestConfig = {
@@ -52,21 +37,39 @@ const MovieDetails = () => {
     }, [movieId]);
 
     const onSubmit = ( reviewFormData : ReviewFormData ) => {
-        // saveReview(reviewFormData)
-        //     .then(response )
+        reviewFormData.movieId = parseInt(movieId);
+        // saveReview(reviewFormData);
+        console.log(reviewFormData);
+        const params: AxiosRequestConfig = {
+            method: 'POST',
+            url: `/reviews`,
+            withCredentials: true,
+            data: reviewFormData,
+        };
+
+        requestBackend(params)
+            .then(response => {
+                console.log(response);
+            })
     }
 
     return (
         <div className="container">
-            <div className="movie-details-title-container">
-                <h6>Tela detalhes do filme id: {movie?.id}</h6>
-            </div>
-
+            
             <form onSubmit={handleSubmit(onSubmit)}>
+                <div className="movie-details-title-container">
+                    <h6>Tela detalhes do filme id: {movieId}
+                        
+                    </h6>
+                </div>
+
+            
                 <div className="base-card new-review-card">
-                    <p>Aqui</p>
                     <div className="mb-4">
                         <input
+                            { ...register("text", {
+                                required: "Campo obrigatório"
+                            })}
                             name="review"
                             type="text"
                             placeholder="Deixe sua avaliação aqui"

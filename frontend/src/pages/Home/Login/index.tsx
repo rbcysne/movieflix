@@ -18,10 +18,8 @@ const Login = () => {
   const history = useHistory();
 
   const onSubmit = ( formData : LoginFormData ) => {
-    console.log(formData);
     requestBackendLogin(formData)
         .then( response => {
-            console.log(response.data);
             setHasError(false);
             saveLoginAuthData(response.data);
             history.push("/movies");
