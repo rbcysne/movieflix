@@ -13,3 +13,12 @@
     font-size: 1.5em;
     font-weight: 700;
 }
+
+.logout-btn-container button {
+    border: #000000 1px solid;
+    border-radius: 4px;
+}
+
+.logou-btn-container h6 {
+    font-size: 0.8em;
+}

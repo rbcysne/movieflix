@@ -7,7 +7,7 @@ import { requestBackend } from 'util/requests';
 // import MovieCard from '../../components/MovieCard';
 import './styles.css';
 
-const Movies = () => {
+const MovieCatalog = () => {
 
     const [page, setPage] = useState<Page<Movie>>();
 
@@ -21,7 +21,6 @@ const Movies = () => {
         requestBackend(params)
             .then(response => {
                 setPage(response.data);
-                // console.log(page?.content);
             })
     }, []);
 
@@ -44,12 +43,12 @@ const Movies = () => {
                 }) } */}
                 <div key={1}>
                     <Link to={`movies/1`}>
-                        <span>Acessar /movie/1</span>
+                        <span>Acessar /movies/1</span>
                     </Link>
                 </div>
                 <div key={2}>
                     <Link to={`movies/2`}>
-                        <span>Acessar /movie/2</span>
+                        <span>Acessar /movies/2</span>
                     </Link>
                 </div>
 
@@ -58,4 +57,4 @@ const Movies = () => {
     );
 };
 
-export default Movies;
+export default MovieCatalog;

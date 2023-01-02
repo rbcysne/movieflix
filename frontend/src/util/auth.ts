@@ -7,14 +7,14 @@ import { getLoginAuthData } from './storage';
 export const getTokenData = () : TokenData | undefined => {
 
     try {
-        return jwtDecode(getLoginAuthData().access_token);
+        return jwtDecode(getLoginAuthData().access_token) as TokenData;
     } catch(error) {
         return undefined;
     }
 
 }
 
-export const hasAnyRole = (roles : Role[]) : boolean => {
+export const hasAnyRoles = (roles : Role[]) : boolean => {
 
     const tokenData = getTokenData();
 
@@ -23,4 +23,11 @@ export const hasAnyRole = (roles : Role[]) : boolean => {
     }
 
     return false;
+}
+
+export const isAuthenticated = () : boolean => {
+    const tokenData = getTokenData();
+
+    return ( (tokenData && (tokenData?.exp * 1000 > Date.now())) ? true : false );
+
 }

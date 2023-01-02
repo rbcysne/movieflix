@@ -1,0 +1,7 @@
+.new-review-card {
+    padding: 10px;
+}
+
+.new-review-card input, .new-review-card input:focus {
+    background-color: #FFFFFF;
+}

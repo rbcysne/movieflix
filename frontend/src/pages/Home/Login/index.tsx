@@ -1,16 +1,29 @@
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 import ButtonIcon from "components/ButtonIcon";
 import { requestBackendLogin } from "util/requests";
 import { saveLoginAuthData } from "util/storage";
 import { LoginFormData } from "types/LoginFormData";
+import { AuthContext } from "AuthContext";
 
 import "./styles.css";
+import { getTokenData } from "util/auth";
+
+
+type LocationState = {
+  from: string;
+}
 
 const Login = () => {
+
+  const { authContextData, setAuthContextData } = useContext(AuthContext);
     
+  const location = useLocation<LocationState>();
+
+  const { from } = location.state || { from : {pathname: '/movies'} };
+
   const { register, handleSubmit, formState: { errors }, } = useForm<LoginFormData>();
 
   const [hasError, setHasError] = useState(false);
@@ -22,7 +35,11 @@ const Login = () => {
         .then( response => {
             setHasError(false);
             saveLoginAuthData(response.data);
-            history.push("/movies");
+            setAuthContextData({
+              authenticated: true,
+              tokenData: getTokenData(),
+            })
+            history.replace(from);
         })
         .catch( error => {
             console.log(error);

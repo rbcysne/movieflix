@@ -1,3 +1,3 @@
 export type Role = 
-    'VISITOR' | 
-    'MEMBER';
+    'ROLE_VISITOR' | 
+    'ROLE_MEMBER';

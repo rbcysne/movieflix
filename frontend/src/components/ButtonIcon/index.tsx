@@ -10,7 +10,6 @@ export const ButtonIcon = ( { text } : Props) => {
             <button className="btn btn-warning">
                 <h6>{ text }</h6>
             </button>
-        
         </div>
     );
 };
