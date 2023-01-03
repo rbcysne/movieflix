@@ -1,5 +1,5 @@
 .movies-list-container {
-    font-size: 18px;
+    font-size: 16px;
 }
 
 .movies-list-title-container {
@@ -7,8 +7,13 @@
 }
 
 .movies-list-title-container h1 {
-    font-size: 1em;
-    line-height: 25px;
+    font-size: 1.6em;
+    font-weight: 700;
+    color: #FFFFFF;
     letter-spacing: -0.015em;
+}
+
+
+.movie-item {
     color: #FFFFFF;
 }

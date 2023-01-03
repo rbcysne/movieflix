@@ -1,31 +1,13 @@
-import { AxiosRequestConfig } from "axios";
-import { useEffect, useState } from "react";
 
 import MovieReviewCard from "components/MovieReviewCard";
 import { MovieReview } from "types/MovieReview";
-import { requestBackend } from "util/requests";
 import './styles.css';
 
 type Props = {
-    movieId: string;
+    movieReviews: MovieReview[];
 }
 
-const MovieReviewList = ( { movieId } : Props ) => {
-
-    const [ movieReviews, setMovieReviews ] = useState<MovieReview[]>([]);
-
-    useEffect(() => {
-        const params: AxiosRequestConfig = {
-            method: 'GET',
-            url: `/movies/${movieId}/reviews`,
-            withCredentials: true,
-        };
-
-        requestBackend(params)
-            .then(response => {
-                setMovieReviews(response.data);
-            });
-    }, [movieId]);
+const MovieReviewList = ( { movieReviews } : Props ) => {
 
     return (
         <div className="base-card reviews-list-card">

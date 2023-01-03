@@ -43,12 +43,12 @@ const MovieCatalog = () => {
                 }) } */}
                 <div key={1}>
                     <Link to={`movies/1`}>
-                        <span>Acessar /movies/1</span>
+                        <span className="movie-item">Acessar /movies/1</span>
                     </Link>
                 </div>
                 <div key={2}>
                     <Link to={`movies/2`}>
-                        <span>Acessar /movies/2</span>
+                        <span className="movie-item">Acessar /movies/2</span>
                     </Link>
                 </div>
 

@@ -5,14 +5,16 @@ import ButtonIcon from 'components/ButtonIcon';
 import { ReviewFormData } from 'types/ReviewFormData';
 import { requestBackend } from 'util/requests';
 import './styles.css';
+import { MovieReview } from 'types/MovieReview';
 
 type Props = {
     movieId: string;
+    onInsertReview: (review: MovieReview) => void;
 }
 
-const MovieReviewForm = ( { movieId } : Props) => {
+const MovieReviewForm = ( { movieId, onInsertReview } : Props) => {
 
-    const { register, handleSubmit, formState : { errors} } = useForm<ReviewFormData>();
+    const { register, handleSubmit, formState : { errors}, setValue } = useForm<ReviewFormData>();
 
     const onSubmit = ( reviewFormData : ReviewFormData ) => {
         reviewFormData.movieId = parseInt(movieId);
@@ -27,6 +29,8 @@ const MovieReviewForm = ( { movieId } : Props) => {
 
         requestBackend(params)
             .then(response => {
+                setValue('text', '');
+                onInsertReview(response.data);
                 console.log(response);
                 
             })
