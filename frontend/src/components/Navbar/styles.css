@@ -1,7 +1,8 @@
 .main-nav {
     min-height: 70px;
-    padding-left: 20px;
+    padding: 20px;
     font-size: 16px;
+    
 }
 
 .nav-logo, .nav-logo:hover {
@@ -9,16 +10,26 @@
     text-decoration: none;
 }
 
-.nav-logo h4 {
-    font-size: 1.5em;
+.nav-logo h6 {
+    font-size: 1.6em;
     font-weight: 700;
 }
 
-.logout-btn-container button {
+.logout-btn-container button, .logout-btn-container button:hover {
     border: #000000 1px solid;
-    border-radius: 4px;
+    border-radius: 10px;
+    width: 96px;
+    height: 30px;
+    text-transform: uppercase;
 }
 
-.logou-btn-container h6 {
-    font-size: 0.8em;
+.btn h4 {
+    font-size: 0.9em;
+    font-weight: 700;
+}
+
+@media (min-width: 1200px) {
+    .main-nav {
+        padding: 40px;
+    }
 }

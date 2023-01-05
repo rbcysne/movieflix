@@ -7,18 +7,24 @@ import Login from './Login';
 export const Home = () => {
 
     return (
-        <div className="container">
+        <>
             <div className="home-container">
-                <div>
+                <div className="home-content-container">
+                    <div>
+                        <h1>Avalie Filmes</h1>
+                        <p>
+                            Diga o que você achou do seu filme favorito
+                        </p>
+                    </div>
+                    <div >
+                        <HomeImage />
+                    </div>
+                </div>
+                <div className="login-container">
                     <Login />
                 </div>
-
-                <div className="home-image">
-                    <HomeImage />
-                </div>
-
             </div>
-        </div>
+        </>
     );
 };
 

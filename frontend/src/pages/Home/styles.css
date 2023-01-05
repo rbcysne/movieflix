@@ -1,16 +1,49 @@
 .home-container {
+    display: flex;
+    justify-content: space-around;
     padding: 20px;
     font-size: 16px;
+    align-items: center;
 }
 
-.home-image {
+.home-content-container {
     display: none;
+    width: 460px;
+    height: auto;
+    color: #FFFFFF;
 }
+
+.home-content-container h1 {
+    font-size: 2.6em;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.login-container {
+    width: 298px;
+    height: 464px;
+}
+
+@media (min-width: 576px) {
+    .login-container {
+        width: 480px;
+        height: 575px;
+    }
+}
+
 
 @media (min-width: 1200px) {
 
-    .home-image {
+    .home-container {
+        padding: 40px 100px;
+    }
+    .home-content-container {
         display: unset;
+    }
+
+    .login-container {
+        width: 480px;
+        height: 575px;
     }
     
 }

@@ -41,14 +41,14 @@ const Navbar = () => {
             <div className="container-fluid">
                 <div>
                     <Link to="/movies" className="nav-logo">
-                        <h4>MovieFlix</h4>
+                        <h6>MovieFlix</h6>
                     </Link>
                 </div>
-                <div className="">
+                <div>
                     {authContextData.authenticated ? (
-                            <div className="btn-container logout-btn-container">
-                                <button className="btn btn-warning" onClick={handleLogout}>
-                                    <h6>Sair</h6>
+                            <div className="logout-btn-container">
+                                <button className="btn" onClick={handleLogout}>
+                                    <h4>Sair</h4>
                                 </button>
                             </div>
                         ) : ""
