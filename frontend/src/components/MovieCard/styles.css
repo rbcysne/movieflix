@@ -1,22 +1,18 @@
 .movie-card {
     display: flex;
     align-items: center;
-    align-content: space-around;
     margin-bottom: 20px;
 }
 
 .card-title-container {
-    padding: 10px;
-}
-
-.card-title-container h6 {
+    padding: 5px;
     font-size: 18px;
-    color: #263238;
+    color: #ffffff;
 }
 
 .card-image-container {
     text-align: start;
-    padding: 10px 0 10px 10px;
+    padding: 10px 0 10px 0px;
 }
 
 .card-image-container img {
