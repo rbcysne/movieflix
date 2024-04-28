@@ -1,4 +1,4 @@
-export type Page<T> = {
+export type SpringPage<T> = {
     content: T[];
     last: boolean;
     totalPages: number;
@@ -8,4 +8,4 @@ export type Page<T> = {
     numberOfElements?: number;
     size: number;
     empty: boolean;
-}
+};

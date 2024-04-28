@@ -1,0 +1,34 @@
+.movie-filter-container {
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+.movie-genre-select-container {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.movie-genre-select-filter__control {
+    border-radius: 10px !important;
+    font-size: 1em;
+    letter-spacing: -0.015em;
+    color: #FFFFFF !important;
+    background-color: #6C6C6C !important;
+    height: 50px;
+}
+
+.movie-genre-select-filter__input {
+    color: #FFFFFF !important;
+}
+
+.movie-genre-select-filter__placeholder {
+    color: #FFFFFF !important;
+}
+
+.movie-genre-select-filter__indicator {
+    color: #9E9E9E !important;
+}
+
+.movie-genre-select-filter__indicator-separator {
+    display: none;
+}

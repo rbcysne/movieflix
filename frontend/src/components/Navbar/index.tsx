@@ -1,32 +1,31 @@
-import { AuthContext } from "AuthContext";
-import { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { AuthContext } from 'AuthContext';
+import { useContext, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
-import { AuthContextData } from "types/AuthContextData";
-import { getTokenData, isAuthenticated } from "util/auth";
-import history from "util/history";
-import { removeLoginAuthData } from "util/storage";
+import { AuthContextData } from 'types/AuthContextData';
+import { getTokenData, isAuthenticated } from 'util/auth';
+import history from 'util/history';
+import { removeLoginAuthData } from 'util/storage';
 
 import './styles.css';
 
 const Navbar = () => {
-
     const { authContextData, setAuthContextData } = useContext(AuthContext);
 
     useEffect(() => {
-        if(isAuthenticated()) {
+        if (isAuthenticated()) {
             setAuthContextData({
                 authenticated: true,
                 tokenData: getTokenData(),
-            })
-        } else{
+            });
+        } else {
             setAuthContextData({
                 authenticated: false,
-            })
+            });
         }
     }, [setAuthContextData]);
 
-    const handleLogout = (event : React.MouseEvent<HTMLButtonElement>) => {
+    const handleLogout = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
         removeLoginAuthData();
         setAuthContextData({
@@ -34,7 +33,7 @@ const Navbar = () => {
         });
 
         history.replace('/');
-    }
+    };
 
     return (
         <nav className="navbar navbar-expand-md bg-warning navbar-dark main-nav">
@@ -46,13 +45,14 @@ const Navbar = () => {
                 </div>
                 <div>
                     {authContextData.authenticated ? (
-                            <div className="logout-btn-container">
-                                <button className="btn" onClick={handleLogout}>
-                                    <h4>Sair</h4>
-                                </button>
-                            </div>
-                        ) : ""
-                    }
+                        <div className="logout-btn-container">
+                            <button className="btn" onClick={handleLogout}>
+                                <h4>Sair</h4>
+                            </button>
+                        </div>
+                    ) : (
+                        ''
+                    )}
                 </div>
             </div>
         </nav>

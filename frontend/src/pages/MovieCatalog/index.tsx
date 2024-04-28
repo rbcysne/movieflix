@@ -1,96 +1,75 @@
 import { AxiosRequestConfig } from 'axios';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import Select from 'react-select';
 
 import MovieCard from '../../components/MovieCard';
-import { Movie } from 'types/Movie';
-import { Page } from 'types/Page';
-import { Genre } from 'types/Genre';
+import { MovieDTO } from 'types/MovieDTO';
+import { SpringPage } from 'types/SpringPage';
+
 import { requestBackend } from 'util/requests';
 import './styles.css';
+import MovieGenreFilter, {
+    MovieGenreFilterData,
+} from 'components/MovieGenreFilter';
 
-
+type ControlData = {
+    activePage: number;
+    searchData: MovieGenreFilterData;
+};
 
 const MovieCatalog = () => {
+    const [page, setPage] = useState<SpringPage<MovieDTO>>();
 
-    const [page, setPage] = useState<Page<Movie>>();
+    const [controlData, setControlData] = useState<ControlData>({
+        activePage: 0,
+        searchData: { genre: null },
+    });
 
-    const [selectGenres, setSelectGenres] = useState<Genre[]>([]);
-
-    const options = [
-        {value: 'terror', label: 'Terror'},
-        {value: 'comédia', label: 'Comédia'}
-    ]
-
-    const getMovies = (pageNumber: number) => {
+    const getMovies = useCallback(() => {
         const params: AxiosRequestConfig = {
             method: 'GET',
-            url: "/movies",
+            url: '/movies',
             withCredentials: true,
             params: {
-                page: pageNumber,
+                page: controlData.activePage,
                 size: 4,
-            }
+                genreId: controlData.searchData.genre?.id,
+            },
         };
 
-        requestBackend(params)
-            .then(response => {
-                setPage(response.data);
-            })
+        requestBackend(params).then((response) => {
+            setPage(response.data);
+        });
+    }, [controlData]);
+
+    useEffect(() => {
+        getMovies();
+    }, [getMovies]);
+
+    function handleSubmitFilter(data: MovieGenreFilterData) {
+        setControlData({ activePage: 0, searchData: data });
     }
-    useEffect(() => {
-        getMovies(0);
-    }, []);
 
-    useEffect(() => {
-        const params: AxiosRequestConfig = {
-            method: 'GET',
-            url: "/genres",
-            withCredentials: true
-        }
-
-        requestBackend(params)
-            .then(response => {
-                setSelectGenres(response.data.content);
-            })
-    }, []);
 
     return (
-
         <div className="container my-4 movies-list-container">
-
-            <form>
-                <div className="row movies-list-title-container">
-                    <Select
-                        options={selectGenres}
-                        getOptionValue={(genre: Genre) => String(genre.id)}
-                        getOptionLabel={(genre: Genre) => genre.name}
-                    />
-                </div>
-            </form>
+            <div className="movie-genre-filter-container">
+                <MovieGenreFilter onSubmitFilter={handleSubmitFilter} />
+            </div>
 
             <div className="row">
-                { page?.content.map((item) => {
+                {page?.content.map((movie) => {
                     return (
-                        <div key={item.id}>
-                            <Link to={`movies/${item.id}`}>
-                                <MovieCard movie={item}/>
+                        <div
+                            className="col-sm-6 col-lg-4 col-xl-3"
+                            key={movie.id}
+                        >
+                            <Link to={`movies/${movie.id}`}>
+                                <MovieCard movie={movie} />
                             </Link>
                         </div>
                     );
-                }) }
-                {/* <div key={1}>
-                    <Link to={`movies/1`}>
-                        <span className="movie-item">Acessar /movies/1</span>
-                    </Link>
-                </div>
-                <div key={2}>
-                    <Link to={`movies/2`}>
-                        <span className="movie-item">Acessar /movies/2</span>
-                    </Link>
-                </div> */}
-
+                })}
             </div>
         </div>
     );

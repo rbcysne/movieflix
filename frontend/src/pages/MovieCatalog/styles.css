@@ -1,19 +1,9 @@
 .movies-list-container {
-    font-size: 16px;
+    max-width: 1200px;
 }
 
-.movies-list-title-container {
+.movie-genre-filter-container {
     margin-bottom: 20px;
 }
 
-.movies-list-title-container h1 {
-    font-size: 1.6em;
-    font-weight: 700;
-    color: #FFFFFF;
-    letter-spacing: -0.015em;
-}
 
-
-.movie-item {
-    color: #FFFFFF;
-}
