@@ -1,13 +1,15 @@
+import { AxiosRequestConfig } from "axios";
 import { useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 
+import './styles.css';
 import MovieReviewForm from "components/MovieReviewForm";
 import { hasAnyRoles } from "util/auth";
 import MovieReviewList from "components/MovieReviewList";
-import './styles.css';
-import { useEffect, useState } from "react";
 import { MovieReview } from "types/MovieReview";
-import { AxiosRequestConfig } from "axios";
 import { requestBackend } from "util/requests";
+import MovieDetailsCard from "components/MovieDetailsCard";
+import { MovieDetailsDTO } from "types/MovieDetailsDTO";
 
 type UrlParams = {
     movieId: string;
@@ -18,6 +20,21 @@ const MovieDetails = () => {
     const  { movieId } = useParams<UrlParams>();
 
     const [ movieReviews, setMovieReviews ] = useState<MovieReview[]>([]);
+
+    const [ movieDetails, setMovieDetails ] = useState<MovieDetailsDTO>();
+
+    useEffect(() => {
+        const params: AxiosRequestConfig = {
+            method: 'GET',
+            url: `/movies/${movieId}`,
+            withCredentials: true,
+        };
+
+        requestBackend(params)
+            .then(response => {
+                setMovieDetails(response.data);
+            });
+    }, [movieId]);
 
     useEffect(() => {
         const params: AxiosRequestConfig = {
@@ -41,9 +58,12 @@ const MovieDetails = () => {
     return (
         <div className="container">
             
-            <div className="movie-details-title-container">
-                <h6>Tela detalhes do filme id: {movieId}</h6>
-            </div>
+            { movieDetails ? 
+                <div className="movie-details-container">
+                    <MovieDetailsCard movieDetails={movieDetails}/>
+                </div>
+                : ''
+            }
 
             { hasAnyRoles(['ROLE_MEMBER']) && 
                 (

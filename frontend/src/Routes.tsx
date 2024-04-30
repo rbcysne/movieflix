@@ -20,9 +20,8 @@ const Routes = () => {
                         <MovieCatalog  />
                     </Route>
                 
-                    <Route path="/movies/:movieId">
-                        <MovieDetails  />
-                    </Route>
+                    <Route component={ MovieDetails } path="/movies/:movieId" />
+
                 </PrivateRoute>
 
             </Switch>

@@ -1,11 +1,19 @@
-.movie-details-title-container {
-    padding: 15px 10px;
+.movie-details-container {
+    padding: 24px 0px;
     font-size: 16px;
 }
 
-.movie-details-title-container h6 {
+.movie-details-container h6 {
     font-size: 1.6em;
     font-weight: 700;
     color: #FFFFFF;
     letter-spacing: -0.015em;
+}
+
+.movie-synopsis-container {
+    text-align: justify;
+    color: #9E9E9E;
+    border: 1px solid #E1E1E1;
+    border-radius: 8px;
+    padding: 8px;
 }
