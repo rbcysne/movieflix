@@ -2,15 +2,16 @@ import { AxiosRequestConfig } from 'axios';
 import { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
+
+import './styles.css';
 import MovieCard from '../../components/MovieCard';
 import { MovieDTO } from 'types/MovieDTO';
 import { SpringPage } from 'types/SpringPage';
-
 import { requestBackend } from 'util/requests';
-import './styles.css';
 import MovieGenreFilter, {
     MovieGenreFilterData,
 } from 'components/MovieGenreFilter';
+import Pagination from 'components/Pagination';
 
 type ControlData = {
     activePage: number;
@@ -46,6 +47,13 @@ const MovieCatalog = () => {
         getMovies();
     }, [getMovies]);
 
+    function handlePageChange(pageNumber: number) {
+        setControlData({
+            activePage: pageNumber,
+            searchData: controlData.searchData,
+        })
+    }
+
     function handleSubmitFilter(data: MovieGenreFilterData) {
         setControlData({ activePage: 0, searchData: data });
     }
@@ -71,6 +79,12 @@ const MovieCatalog = () => {
                     );
                 })}
             </div>
+            <Pagination 
+                forcePage={page?.number}
+                pageCount={page ? page.totalPages : 0}
+                range={3}
+                onChange={handlePageChange}
+            />
         </div>
     );
 };
