@@ -1,11 +1,13 @@
 import { AxiosRequestConfig } from 'axios';
 import { useForm } from 'react-hook-form';
+import { toast } from 'react-toastify';
 
 import ButtonIcon from 'components/ButtonIcon';
 import { ReviewFormData } from 'types/ReviewFormData';
 import { requestBackend } from 'util/requests';
 import './styles.css';
 import { MovieReview } from 'types/MovieReview';
+
 
 type Props = {
     movieId: string;
@@ -31,8 +33,12 @@ const MovieReviewForm = ( { movieId, onInsertReview } : Props) => {
             .then(response => {
                 setValue('text', '');
                 onInsertReview(response.data);
+                toast.info("Avaliação enviada com sucesso!");
                 console.log(response);
                 
+            })
+            .catch(() => {
+                toast.error("Erro ao cadastrar avaliação!");
             })
     }
 

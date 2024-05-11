@@ -1,3 +1,8 @@
+.btn-container {
+    display: flex;
+    justify-content: center ;
+    
+}
 
 .btn-container button {
     border-radius: 4px;
@@ -7,8 +12,22 @@
 .btn h6 {
     text-transform: uppercase;
     font-weight: 700;
-    font-size: 20px;
+    font-size: 16px;
     text-align: center;
     letter-spacing: -0.015em;
     color: #000000;
+}
+
+@media (min-width: 768px) {
+
+    .btn-container button {
+        width: 400px;
+    }
+}
+
+@media (min-width: 992px) {
+
+    .btn h6 {
+        font-size: 20px;
+    }
 }
