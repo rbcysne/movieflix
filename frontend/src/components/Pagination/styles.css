@@ -22,26 +22,26 @@
 }
 
 .pagination-item.active {
-    background: #ffc700;
+    background: #dfcb83;
 }
 
 .pagination-link-active {
-    background: #ffc700;
+    background: #dfcb83;
 }
 
 .arrow-previous {
     margin-right: 5px;
     transform: rotate(-180deg);
-    color: #ffc700;
+    color: #dfcb83;
 }
 
 .arrow-next {
     margin-left: 5px;
-    color: #ffc700;
+    color: #dfcb83;
 }
 
 .arrow-active {
-    color: #ffc700;
+    color: #dfcb83;
 }
 
 .arrow-inactive {
